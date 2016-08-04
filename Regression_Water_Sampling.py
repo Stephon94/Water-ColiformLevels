@@ -76,20 +76,25 @@ ys4 = [int(Data4[1][2]),int(Data4[2][2]),int(Data4[3][2]),int(Data4[4][2]),int(D
 
 
 #Setting variables for each line.
-line1 = ax1.plot(xs, ys)#, xs, ys2, xs, ys3, xs, ys4)
-line2 = ax1.plot(xs, ys2)
-line3 = ax1.plot(xs, ys3)
-line4 = ax1.plot(xs, ys4)
+line1 = ax1.plot(xs, ys, label = "Bronx River @ 231st")#, xs, ys2, xs, ys3, xs, ys4)
+line2 = ax1.plot(xs, ys2, label = "Bronx River @ Westchester Ave")
+line3 = ax1.plot(xs, ys3, label = "Alley Creek @ ?")
+line4 = ax1.plot(xs, ys4, label = "Alley Creek @ ?")
 
 #Setting colors for each line
-plt.setp(line1, color = 'g', linewidth = 1.3)
-plt.setp(line2, color = 'r', linewidth = 1.3)
-plt.setp(line3, color = 'b', linewidth = 1.3)
-plt.setp(line4, color = 'c', linewidth = 1.3)
+plt.setp(line1, color = 'g', linewidth = 1.3, alpha=0.5)
+plt.setp(line2, color = 'r', linewidth = 1.3, alpha=0.5)
+plt.setp(line3, color = 'b', linewidth = 1.3, alpha=0.5)
+plt.setp(line4, color = 'c', linewidth = 1.3, alpha=0.5)
 
 #Slanting the Date(X-axis)
 for label in ax1.xaxis.get_ticklabels():
     label.set_rotation(45)
+
+plt.xlabel('Date')
+plt.ylabel('Fecal Coliform #/mL')
+
+plt.legend(ncol=1,prop={'size':8}).get_frame().set_alpha(0.4)
 #Adjusting the plot
 plt.subplots_adjust(left=0.12, bottom=0.19, right=0.90, top=0.93, wspace=0.20, hspace=0.20)
 plt.show()
