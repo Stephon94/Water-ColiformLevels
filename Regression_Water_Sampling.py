@@ -60,25 +60,8 @@ for data in dataList:
 
 
 #Plotting all 4 on 1 grid 
-ax1 = plt.subplot2grid((12,2), (1,0), rowspan=4, colspan=1)
-ax2 = plt.subplot2grid((12,2), (7,0), rowspan=4, colspan=1)
-ax3 = plt.subplot2grid((12,2), (1,1), rowspan=4, colspan=1)
-ax4 = plt.subplot2grid((12,2), (7,1), rowspan=4, colspan=1)
+ax1 = plt.subplot2grid((12,2), (0,0), rowspan=12, colspan=2)
 
-ax1.grid(True)
-ax2.grid(True)
-ax3.grid(True)
-ax4.grid(True)
-
-#Slanting the X-axis (dates)
-for label in ax1.xaxis.get_ticklabels():
-    label.set_rotation(45)
-for label in ax2.xaxis.get_ticklabels():
-    label.set_rotation(45)
-for label in ax3.xaxis.get_ticklabels():
-    label.set_rotation(45)
-for label in ax4.xaxis.get_ticklabels():
-    label.set_rotation(45)
 
 #Just grabbing the dates (all are the same for each site, so I don't need ALL of the dates from each set. Kind of like a one size fits all situation)    
 dates = [Data[1][1],Data[2][1],Data[3][1],Data[4][1],Data[5][1],Data[6][1],Data[7][1],Data[8][1],Data[9][1],Data[10][1],Data[11][1],Data[12][1]]
@@ -92,27 +75,23 @@ ys3 = [int(Data3[1][2]),int(Data3[2][2]),int(Data3[3][2]),int(Data3[4][2]),int(D
 ys4 = [int(Data4[1][2]),int(Data4[2][2]),int(Data4[3][2]),int(Data4[4][2]),int(Data4[5][2]),int(Data4[6][2]),int(Data4[7][2]),int(Data4[8][2]),int(Data4[9][2]),int(Data4[10][2]),int(Data4[11][2]),int(Data4[12][2])]
 
 
+#Setting variables for each line.
+line1 = ax1.plot(xs, ys)#, xs, ys2, xs, ys3, xs, ys4)
+line2 = ax1.plot(xs, ys2)
+line3 = ax1.plot(xs, ys3)
+line4 = ax1.plot(xs, ys4)
 
-#Making titles and plotting them
-x,y = xs,ys
-ax1.set_title("Bronx River @ Westchester Ave")
-ax1.plot(x,y)
+#Setting colors for each line
+plt.setp(line1, color = 'g', linewidth = 1.3)
+plt.setp(line2, color = 'r', linewidth = 1.3)
+plt.setp(line3, color = 'b', linewidth = 1.3)
+plt.setp(line4, color = 'c', linewidth = 1.3)
 
-x,y = xs,ys2
-ax2.set_title("Bronx River @ 231st")
-ax2.plot(x,y)
-
-x,y = xs,ys3
-ax3.set_title("Alley Creek @ CSO Outfall")
-ax3.plot(x,y)
-
-x,y = xs,ys4
-ax4.set_title("Alley Creek @ Northern Blvd")
-ax4.plot(x,y)
-
-
-#Adjusting the subplots (Make the graph full screen)
-plt.subplots_adjust(left=0.09, bottom=0.11, right=0.94, top=1.00, wspace=0.20, hspace=0.20)
+#Slanting the Date(X-axis)
+for label in ax1.xaxis.get_ticklabels():
+    label.set_rotation(45)
+#Adjusting the plot
+plt.subplots_adjust(left=0.12, bottom=0.19, right=0.90, top=0.93, wspace=0.20, hspace=0.20)
 plt.show()
 
 
