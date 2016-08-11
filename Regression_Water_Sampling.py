@@ -33,12 +33,13 @@ with open('HarborSAMP.csv', 'rb') as csvfile:
         if row[0] == 'BR1':
             row[1] = row[1][:10]
             Data2.append(row)
-        if row[0] == 'AC2':
-            row[1] = row[1][:10]
-            Data3.append(row)
-        if row[0] == 'AC1':
-            row[1] = row[1][:10]
-            Data4.append(row)
+##        if row[0] == 'BR5':
+##            row[1] = row[1][:10]
+##            Data3.append(row)
+##        if row[0] == 'E14':
+##            row[1] = row[1][:10]
+##            Data4.append(row)
+        
 #This is simply just obtaining the percent change for each date
 for data in dataList:
     new = 1
@@ -71,21 +72,21 @@ xs = [dt.datetime.strptime(d,'%Y-%m-%d').date() for d in dates[:12]]
 #Grabbing each sets "Fecal Coliform" data and set them to variable
 ys = [int(Data[1][2]),int(Data[2][2]),int(Data[3][2]),int(Data[4][2]),int(Data[5][2]),int(Data[6][2]),int(Data[7][2]),int(Data[8][2]),int(Data[9][2]),int(Data[10][2]),int(Data[11][2]),int(Data[12][2])]
 ys2 = [int(Data2[1][2]),int(Data2[2][2]),int(Data2[3][2]),int(Data2[4][2]),int(Data2[5][2]),int(Data2[6][2]),int(Data2[7][2]),int(Data2[8][2]),int(Data2[9][2]),int(Data2[10][2]),int(Data2[11][2]),int(Data2[12][2])]
-ys3 = [int(Data3[1][2]),int(Data3[2][2]),int(Data3[3][2]),int(Data3[4][2]),int(Data3[5][2]),int(Data3[6][2]),int(Data3[7][2]),int(Data3[8][2]),int(Data3[9][2]),int(Data3[10][2]),int(Data3[11][2]),int(Data3[12][2])]
-ys4 = [int(Data4[1][2]),int(Data4[2][2]),int(Data4[3][2]),int(Data4[4][2]),int(Data4[5][2]),int(Data4[6][2]),int(Data4[7][2]),int(Data4[8][2]),int(Data4[9][2]),int(Data4[10][2]),int(Data4[11][2]),int(Data4[12][2])]
+##ys3 = [int(Data3[1][2]),int(Data3[2][2]),int(Data3[3][2]),int(Data3[4][2]),int(Data3[5][2]),int(Data3[6][2]),int(Data3[7][2]),int(Data3[8][2]),int(Data3[9][2]),int(Data3[10][2]),int(Data3[11][2]),int(Data3[12][2])]
+##ys4 = [int(Data4[1][2]),int(Data4[2][2]),int(Data4[3][2]),int(Data4[4][2]),int(Data4[5][2]),int(Data4[6][2]),int(Data4[7][2]),int(Data4[8][2]),int(Data4[9][2]),int(Data4[10][2]),int(Data4[11][2]),int(Data4[12][2])]
 
 
 #Setting variables for each line.
 line1 = ax1.plot(xs, ys, label = "Bronx River @ 231st")#, xs, ys2, xs, ys3, xs, ys4)
 line2 = ax1.plot(xs, ys2, label = "Bronx River @ Westchester Ave")
-line3 = ax1.plot(xs, ys3, label = "Alley Creek @ ?")
-line4 = ax1.plot(xs, ys4, label = "Alley Creek @ ?")
+##line3 = ax1.plot(xs, ys3, label = "Mouth of Bronx River")
+##line4 = ax1.plot(xs, ys4, label = 'Mouth of Bronx River Buoy N"2"')
 
 #Setting colors for each line
 plt.setp(line1, color = 'g', linewidth = 1.3, alpha=0.5)
 plt.setp(line2, color = 'r', linewidth = 1.3, alpha=0.5)
-plt.setp(line3, color = 'b', linewidth = 1.3, alpha=0.5)
-plt.setp(line4, color = 'c', linewidth = 1.3, alpha=0.5)
+##plt.setp(line3, color = 'b', linewidth = 1.3, alpha=0.5)
+##plt.setp(line4, color = 'c', linewidth = 1.3, alpha=0.5)
 
 #Slanting the Date(X-axis)
 for label in ax1.xaxis.get_ticklabels():
